@@ -1,0 +1,16 @@
+[user]
+	name = audrey-w
+	email = audrey.elly0422@gmail.com
+[credential]
+	helper = cache
+[color]
+	ui = auto
+[alias]
+	st = status
+	cm = commit -m
+	cma = commit -am
+	df = diff
+	lg = log
+	cm = commit
+[core]
+	editor = emacs

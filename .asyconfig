@@ -1,0 +1,4 @@
+import settings;
+tex="latex";
+texcommand="platex";
+psviewer="evince";
