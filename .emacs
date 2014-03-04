@@ -4,6 +4,15 @@
       ((string-match "apple-darwin" system-configuration)  ;; Mac
        (setq ostype 'mac)))
 
+;; add ~/.emacs.d/elisp and its subdirectries to load-path
+(let ((default-directory "~/.emacs.d/elisp"))
+  (setq load-path
+	(append
+	 (append 
+	  (normal-top-level-add-to-load-path '("."))
+	  (normal-top-level-add-subdirs-to-load-path))
+	 load-path)))
+
 ;; 起動時のサイズ、表示位置設定
 ;(setq default-frame-alist
 ;      (append (list '(width . 80)
@@ -24,19 +33,12 @@
 (setq auto-mode-alist
       (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq load-path
-      (cons (expand-file-name "/usr/local/share/emacs/site-lisp/yatex") load-path))
-
 (setq tex-command "latexmk"  ;; タイプセッタ設定
       dvi2-command "evince")  ;; プレビューア設定
-
 (setq YaTeX-no-begend-shortcut t)  ;; [prefix] b で補完入力
-
 ;(add-hook 'yatex-mode-hook 'turn-on-reftex)  ;; RefTeX-mode
 
 ;; popwin-mode
-(setq load-path
-      (cons (expand-file-name "/usr/local/share/emacs/site-lisp/popwin") load-path))
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (require 'popwin-yatex)  ;; popwin for YaTeX
@@ -47,9 +49,9 @@
 (global-set-key (kbd "C-z") popwin:keymap)
 
 ;; Aspell
-(setq-default ispell-program-name "aspell")
-(eval-after-load "ispell"
-  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+;(setq-default ispell-program-name "aspell")
+;(eval-after-load "ispell"
+;  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 
 ;; change (yes/no) to (y/n)
 (fset 'yes-or-no-p 'y-or-n-p)
