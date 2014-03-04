@@ -2,6 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# change pronpt
+case "${OSTYPE}" in
+    darwin*)  # Mac
+	export PS1="\u@\h:\W$ "
+	;;
+esac
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -73,21 +80,25 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-if [ "${OSTYPE}" = 'linux-gnu' ]; then  # ubuntu
-    if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
-    fi
-elif [ "${OSTYPE}" = 'darwin' ]; then  # OS X
-    alias ls='ls -G'
-    alias grep='grep -G'
-fi
+case "${OSTYPE}" in
+    linux*)  # Linux
+	if [ -x /usr/bin/dircolors ]; then
+	    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	    alias ls='ls --color=auto'
+#	    alias dir='dir --color=auto'
+#	    alias vdir='vdir --color=auto'
+	    alias grep='grep --color=auto'
+	    alias fgrep='fgrep --color=auto'
+	    alias egrep='egrep --color=auto'
+	fi
+	;;
+    darwin*)  # Mac
+	alias ls='ls -G'
+	alias grep='grep -G'
+	alias fgrep='fgrep -G'
+	alias egrep='egrep -G'
+	;;
+esac
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -103,11 +114,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ "${OSTYPE}" = 'linux-gnu' ]; then  # ubuntu
-    alias em='emacs --maximized --geometry=+0-0 &'
-elif [ "${OSTYPE}" = 'darwin' ]; then  # OS X
-    alias em='open -a Emacs &'
-fi
+case "${OSTYPE}" in
+    linux*)  # Linux
+	alias em='emacs --maximized --geometry=+0-0 &'
+	;;
+    darwin*)  # Mac
+	alias em='open -a Emacs &'
+	;;
+esac
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

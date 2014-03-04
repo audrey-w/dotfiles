@@ -1,8 +1,20 @@
-;; 起動時のサイズ設定
+(defvar ostype nil)
+(cond ((string-match "linux" system-configuration)  ;; Linux
+       (setq ostype 'linux))
+      ((string-match "apple-darwin" system-configuration)  ;; Mac
+       (setq ostype 'mac)))
+
+;; 起動時のサイズ、表示位置設定
 ;(setq default-frame-alist
 ;      (append (list '(width . 80)
 ;		    '(height . 39))
 ;	      default-frame-alist))
+(cond ((eq ostype 'mac)
+       nil))
+
+;; フォント設定
+(cond ((eq ostype 'mac)
+       nil))
 
 ;; 行番号と列番号の表示
 (line-number-mode t)
