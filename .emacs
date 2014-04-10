@@ -68,3 +68,7 @@
 ;; DocView-mode
 (setq doc-view-continuous t)
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
+;; wdired (writable dired)
+(require 'dired)
+(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
