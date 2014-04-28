@@ -35,6 +35,10 @@
 (line-number-mode t)
 (column-number-mode t)
 
+;; ツールバー(アイコンが並んでいる)とメニューバー(文字が並んでいる)の非表示
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+
 ;; change (yes/no) to (y/n)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -72,3 +76,6 @@
 ;; wdired (writable dired)
 (require 'dired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+
+;; Haskell-mode
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
