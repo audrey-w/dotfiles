@@ -62,6 +62,7 @@
 (push '("*dvi-preview*" :height 4 :position bottom :noselect t) popwin:special-display-config)  ;; force *dvi-preview* in a popup window
 (push '("*asy-compilation*" :height 8 :position bottom :noselect t) popwin:special-display-config)  ;; force *asy-compilation* in a popup window
 (push '("*Backtrace*" :height 8 :position bottom :noselect t) popwin:special-display-config)  ;; force *Backtrace* in a popup window
+(push '("*haskell*" :width 70 :position right :noselect t) popwin:special-display-config)  ;; force *haskell* in a popup window
 (global-set-key (kbd "C-z") popwin:keymap)
 
 ;; Aspell
@@ -79,3 +80,6 @@
 
 ;; Haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; Graphviz-dot-mode
+(autoload 'graphviz-dot-mode "graphviz-dot-mode" "Graphviz dot mode" t)
