@@ -83,3 +83,5 @@
 
 ;; Graphviz-dot-mode
 (autoload 'graphviz-dot-mode "graphviz-dot-mode" "Graphviz dot mode" t)
+(setq auto-mode-alist
+      (cons (cons "\\.dot$" 'graphviz-dot-mode) auto-mode-alist))
