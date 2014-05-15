@@ -86,3 +86,8 @@
 (setq auto-mode-alist
       (cons (cons "\\.dot$" 'graphviz-dot-mode) auto-mode-alist))
 (setq graphviz-dot-indent-width 2)
+(setq graphviz-dot-auto-indent-on-semi nil)
+
+;; compile-command
+(setq compilation-read-command nil)
+(setq compilation-ask-about-save nil)
