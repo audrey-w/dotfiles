@@ -23,13 +23,20 @@
 (cond ((mac?)
        (setq initial-frame-alist
 	     (append (list '(width . 200) '(height . 60)
-			   '(top . 0) '(left . 0)) initial-frame-alist))
+			   '(top . 0) '(left . 0))
+		     initial-frame-alist))
        (setq default-frame-alist initial-frame-alist)))
 
 ;; 日本語フォント設定
 (cond ((mac?)
        (set-fontset-font nil 'japanese-jisx0208
-			 (font-spec :family "Hiragino Kaku Gothic ProN"))))
+			 (font-spec :family
+				    "Hiragino Kaku Gothic ProN")))
+      ((linux?)
+       (set-fontset-font nil 'japanese-jisx0208
+			 (font-spec :family
+			 	    "Takaoゴシック"))))
+
 
 ;; 行番号と列番号の表示
 (line-number-mode t)
@@ -58,11 +65,17 @@
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (require 'popwin-yatex)  ;; popwin for YaTeX
-(push '("*YaTeX-typesetting*" :height 8 :position bottom :noselect f) popwin:special-display-config)  ;; force *YaTeX-typesetting* in a popup window
-(push '("*dvi-preview*" :height 4 :position bottom :noselect t) popwin:special-display-config)  ;; force *dvi-preview* in a popup window
-(push '("*asy-compilation*" :height 8 :position bottom :noselect t) popwin:special-display-config)  ;; force *asy-compilation* in a popup window
-(push '("*Backtrace*" :height 8 :position bottom :noselect t) popwin:special-display-config)  ;; force *Backtrace* in a popup window
-(push '("*haskell*" :width 70 :position right :noselect t) popwin:special-display-config)  ;; force *haskell* in a popup window
+  ;; force buffers in a popup window
+(push '("*YaTeX-typesetting*" :height 8 :position bottom :noselect f)
+      popwin:special-display-config)
+(push '("*dvi-preview*" :height 4 :position bottom :noselect t)
+      popwin:special-display-config)
+(push '("*asy-compilation*" :height 8 :position bottom :noselect t)
+      popwin:special-display-config)
+(push '("*Backtrace*" :height 8 :position bottom :noselect t)
+      popwin:special-display-config)
+(push '("*haskell*" :width 70 :position right :noselect t)
+      popwin:special-display-config)
 (global-set-key (kbd "C-z") popwin:keymap)
 
 ;; Aspell
