@@ -30,13 +30,15 @@
 ;; 日本語フォント設定
 (cond ((mac?)
        (set-fontset-font nil 'japanese-jisx0208
-			 (font-spec :family
-				    "Hiragino Kaku Gothic ProN")))
+			 (font-spec
+			  :family "Hiragino Kaku Gothic ProN")))
       ((linux?)
        (set-fontset-font nil 'japanese-jisx0208
-			 (font-spec :family
-			 	    "Takaoゴシック"))))
-
+			 (font-spec
+			  :family "Takaoゴシック"))
+       (setq face-font-rescale-alist
+	     (append '((".*Takaoゴシック*." . 1.1))
+		     face-font-rescale-alist))))
 
 ;; 行番号と列番号の表示
 (line-number-mode t)
