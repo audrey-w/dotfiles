@@ -106,3 +106,6 @@
 ;; compile-command
 (setq compilation-read-command nil)
 (setq compilation-ask-about-save nil)
+
+;; revert-buffer
+(global-set-key (kbd "C-c r") 'revert-buffer)
