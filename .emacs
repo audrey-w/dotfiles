@@ -36,9 +36,10 @@
        (set-fontset-font nil 'japanese-jisx0208
 			 (font-spec
 			  :family "Takaoゴシック"))
-       (setq face-font-rescale-alist
-	     (append '((".*Takaoゴシック*." . 1.1))
-		     face-font-rescale-alist))))
+       ;; (setq face-font-rescale-alist
+       ;; 	     (append '((".*Takaoゴシック*." . 1.1))
+       ;; 		     face-font-rescale-alist))))
+       ))
 
 ;; 行番号と列番号の表示
 (line-number-mode t)
