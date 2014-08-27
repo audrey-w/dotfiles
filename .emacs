@@ -64,6 +64,12 @@
 (setq YaTeX-no-begend-shortcut t)  ;; [prefix] b で補完入力
 ;(add-hook 'yatex-mode-hook 'turn-on-reftex)  ;; RefTeX-mode
 
+;; yahtml-mode
+(setq auto-mode-alist
+      (cons (cons "\\.html$" 'yahtml-mode) auto-mode-alist))
+(autoload 'yahtml-mode "yahtml" "Yet Another HTML mode" t)
+(setq yahtml-www-browser "firefox")
+
 ;; popwin-mode
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
