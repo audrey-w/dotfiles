@@ -116,3 +116,6 @@
 
 ;; revert-buffer
 (global-set-key (kbd "C-c r") 'revert-buffer)
+
+;; auto-fill-mode
+(setq default-fill-column 70)
