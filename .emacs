@@ -63,12 +63,17 @@
        (setq dvi2-command "open -a Preview")))
 (setq YaTeX-no-begend-shortcut t)  ;; [prefix] b で補完入力
 ;(add-hook 'yatex-mode-hook 'turn-on-reftex)  ;; RefTeX-mode
+(add-hook 'yatex-mode-hook
+	  '(lambda () (auto-fill-mode -1)))  ;; disable auto-fill
 
 ;; yahtml-mode
 (setq auto-mode-alist
       (cons (cons "\\.html$" 'yahtml-mode) auto-mode-alist))
 (autoload 'yahtml-mode "yahtml" "Yet Another HTML mode" t)
 (setq yahtml-www-browser "firefox")
+(add-hook 'yahtml-mode-hook
+	  '(lambda () (auto-fill-mode -1)))  ;; disable auto-fill
+
 
 ;; popwin-mode
 (require 'popwin)
@@ -118,4 +123,4 @@
 (global-set-key (kbd "C-c r") 'revert-buffer)
 
 ;; auto-fill-mode
-(setq default-fill-column 70)
+;(setq default-fill-column 70)
